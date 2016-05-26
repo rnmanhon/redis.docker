@@ -1,0 +1,25 @@
+redis:
+  container_name: redis
+  image: myredis/redis
+  ports:
+    - 6379:6379
+    - 16379:16379
+  volumes:
+    - ${REDIS_HOME}/data/redis:/data
+    
+redis-s:
+  container_name: redis-s
+  image: myredis/redis
+  ports:
+    - 6380:6380
+    - 16380:16380
+  volumes:
+    - ${REDIS_HOME}/data/redis2:/data
+    
+redis.client:
+  container_name: redis.client
+  image: ubuntu:14.04
+  command: /bin/bash  
+  stdin_open: true
+  tty: true  
+    
