@@ -1,6 +1,6 @@
 redis:
   container_name: redis
-  image:  bitnami/redis:latest
+  image: myredis/redis
   ports:
     - 6379:6379
     - 16379:16379
