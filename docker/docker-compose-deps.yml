@@ -15,6 +15,8 @@ redis.s:
     - 16380:16379
   volumes:
     - ${REDIS_HOME}/data/redis2:/bitnami/redis
+  links:
+    - redis:redis 
 
 # redis-so:
 #  container_name: redis-so
