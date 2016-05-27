@@ -5,23 +5,40 @@ redis:
     - 6379:6379
     - 16379:16379
   volumes:
-    - ${REDIS_HOME}/data/redis:/data
-    
-redis-s:
-  container_name: redis-s
-  image: myredis/redis
+    - ${REDIS_HOME}/data/redis:/bitnami/redis
+
+redis.s:
+  container_name: redis.s
+  image:  bitnami/redis:latest
   ports:
-    - 6380:6380
-    - 16380:16380
+    - 6380:6379
+    - 16380:16379
   volumes:
-    - ${REDIS_HOME}/data/redis2:/data
-    - ${REDIS_HOME}/config/redis2:/etc/redis
-  command: /usr/bin/redis-server /etc/redis/redis.conf
+    - ${REDIS_HOME}/data/redis2:/bitnami/redis
+
+# redis-so:
+#  container_name: redis-so
+#  image: myredis/redis
+#  ports:
+#    - 6380:6380
+#    - 16380:16380
+#  volumes:
+#    - ${REDIS_HOME}/data/redis2:/data
+#    - ${REDIS_HOME}/config/redis2:/etc/redis
+#  command: /usr/bin/redis-server /etc/redis/redis.conf
     
 redis.client:
   container_name: redis.client
-  image: ubuntu:14.04
-  command: /bin/bash  
+  image: redis.client/redis
+#  image: ubuntu:14.04
+  command: bash  
   stdin_open: true
   tty: true  
-    
+
+#redis.test:
+#  container_name: redis.test
+##  image: redis.client/redis
+#  image: ubuntu:14.04
+#  command: bash  
+#  stdin_open: true
+#  tty: true  
