@@ -34,6 +34,10 @@ redis.client:
   command: bash  
   stdin_open: true
   tty: true  
+  links:
+    - redis:redis 
+    - redis.s:redis2
+  
 
 #redis.test:
 #  container_name: redis.test

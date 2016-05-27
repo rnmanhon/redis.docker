@@ -58,7 +58,7 @@
 # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
 # JUST COMMENT THE FOLLOWING LINE.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# bind 0.0.0.0
+bind 0.0.0.0
 
 # Protected mode is a layer of security protection, in order to avoid that
 # Redis instances left open on the internet are accessed and exploited.
@@ -118,8 +118,7 @@ timeout 0
 # On other kernels the period depends on the kernel configuration.
 #
 # A reasonable value for this option is 60 seconds.
-# tcp-keepalive 0
-tcp-keepalive 60
+tcp-keepalive 0
 
 ################################# GENERAL #####################################
 
@@ -448,7 +447,6 @@ slave-priority 100
 # 150k passwords per second against a good box. This means that you should
 # use a very strong password otherwise it will be very easy to break.
 # requirepass foobared
-requirepass hello123
 
 # Command renaming.
 #
@@ -531,7 +529,7 @@ rename-command FLUSHALL ""
 #
 # The default is:
 #
-maxmemory-policy noeviction
+# maxmemory-policy noeviction
 
 # LRU and minimal TTL algorithms are not precise algorithms but approximated
 # algorithms (in order to save memory), so you can tune it for speed or
@@ -564,13 +562,11 @@ maxmemory-policy noeviction
 #
 # Please check http://redis.io/topics/persistence for more information.
 
-# appendonly no
-appendonly yes
+appendonly no
 
 # The name of the append only file (default: "appendonly.aof")
 
-# appendfilename "appendonly.aof"
-appendfilename redis-staging-ao.aof
+appendfilename "appendonly.aof"
 
 # The fsync() call tells the Operating System to actually write data on disk
 # instead of waiting for more data in the output buffer. Some OS will really flush
