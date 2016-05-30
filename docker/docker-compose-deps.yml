@@ -1,22 +1,24 @@
 redis:
   container_name: redis
   image:  bitnami/redis:latest
+  net:  host
   ports:
     - 6379:6379
     - 16379:16379
   volumes:
     - ${REDIS_HOME}/data/redis:/bitnami/redis
 
-redis.s:
-  container_name: redis.s
+redis2:
+  container_name: redis2
   image:  bitnami/redis:latest
-  ports:
-    - 6380:6379
-    - 16380:16379
+  net:  host
+#  ports:
+#    - 6380:6379
+#    - 16380:16379
   volumes:
     - ${REDIS_HOME}/data/redis2:/bitnami/redis
-  links:
-    - redis:redis 
+#  links:
+#    - redis:redis 
 
 # redis-so:
 #  container_name: redis-so
@@ -36,9 +38,9 @@ redis.client:
   command: bash  
   stdin_open: true
   tty: true  
-  links:
-    - redis:redis 
-    - redis.s:redis2
+#  links:
+ #   - redis:redis 
+#    - redis.s:redis2
   
 
 #redis.test:
