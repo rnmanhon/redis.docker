@@ -1,12 +1,27 @@
-// exmaple: nodejs pub.js testChannel hello
+var sentinel = require('redis-sentinel');
+ 
+// List the sentinel endpoints 
+var endpoints = [
+  { host: "172.17.0.1", port: 16379 },
+  { host: "172.17.0.1", port: 16380 }
+];
+ 
+var opts = {}; // Standard node_redis client options 
+var masterName = 'mymaster';
+ 
+// masterName and opts are optional - masterName defaults to 'mymaster' 
+var redisClient = sentinel.createClient(endpoints, masterName, opts);
+ 
 
-var redis = require("redis");
-var client = redis.createClient("6379","172.17.0.1");
-client.auth("hello123");
+redisClient.auth("hello123");
 
 var channel = process.argv[2]; 
 var command = process.argv[3]; 
 
-client.publish(channel, command); 
+console.log("before publish")
+redisClient.publish(channel, command); 
+console.log("after publish")
 
-client.quit();
+redisClient.quit();
+
+
