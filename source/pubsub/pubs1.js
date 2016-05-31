@@ -3,10 +3,17 @@
 var rs = require("sentinel-redis")
 
 // Create a new sentinel manager with the array of sentinel server definitions
+//var sentinel = rs([
+//  { host: "197.17.01", port: 26379 },
+//  { host: "127.0.0.1", port: 26380 },
+// { host: "127.0.0.1", port: 26381 }
+//]);
 var sentinel = rs([
-  { host: "172.17.0.1", port: 16379 },
-  { host: "172.17.0.1", port: 16380 }
+  { host: "192.168.211.128", port: 26379 },
+  { host: "192.168.211.128", port: 26380 },
+ { host: "192.168.211.128", port: 26381 }
 ]);
+
 
 var client = sentinel.createClient("mymaster");
 
