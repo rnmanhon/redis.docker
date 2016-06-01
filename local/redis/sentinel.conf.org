@@ -1,10 +1,14 @@
-bind 172.17.0.1  
+daemonize yes
+logfile "/var/log/redis/logs/redis-sen.log"
+
+bind 192.168.211.128
 port 26379
-sentinel monitor mymaster 172.17.0.1 6379 2
+sentinel monitor mymaster 192.168.211.128 6379 1
 sentinel config-epoch mymaster 1
-?? sentinel leader-epoch mymaster 1
+# sentinel leader-epoch mymaster 1
 sentinel down-after-milliseconds mymaster 5000
 sentinel failover-timeout mymaster 180000
-sentinel auth-pass mymaster hello123
+# sentinel auth-pass mymaster hello123
 sentinel parallel-syncs mymaster 1
 
+dir "/tmp"

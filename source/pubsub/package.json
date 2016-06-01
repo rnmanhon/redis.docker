@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.13.0",
     "redis": "^2.6.0-2",
-    "redis-sentinel": "^0.3.3"
+    "redis-sentinel": "^0.3.3",
+    "sleep": "^3.0.1"
   }
 }
